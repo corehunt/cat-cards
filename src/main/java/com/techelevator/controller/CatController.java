@@ -38,7 +38,7 @@ public class CatController {
 //    }
 
     @RequestMapping (path = "/api/cards", method = RequestMethod.POST)
-    public boolean save (@RequestBody CatCard cardToSave){
+    public boolean save(@RequestBody CatCard cardToSave){
         catCardDao.save(cardToSave);
         return true;
     }
