@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.CatCardDao;
 import com.techelevator.model.CatCard;
+import com.techelevator.model.CatCardNotFoundException;
 import com.techelevator.model.CatFact;
 import com.techelevator.model.CatPic;
 import com.techelevator.services.CatFactService;
@@ -29,12 +30,12 @@ public class CatController {
     }
 
     @RequestMapping(path = "/api/cards/{id}", method = RequestMethod.GET)
-    public CatCard get(@PathVariable long id){
+    public CatCard get(@PathVariable long id) throws CatCardNotFoundException {
         return catCardDao.get(id);
     }
 
     @RequestMapping(path = "/api/cards/random", method = RequestMethod.GET)
-    public CatCard getRandom (){
+    public CatCard getRandom(){
         CatCard card = new CatCard();
         CatPic pic = catPicService.getPic();
         CatFact fact = catFactService.getFact();
@@ -55,13 +56,13 @@ public class CatController {
     }
 
     @RequestMapping (path = "/api/cards/{id}", method = RequestMethod.PUT)
-    public boolean update( @PathVariable long id,@RequestBody CatCard card ){
+    public boolean update( @PathVariable long id,@RequestBody CatCard card )throws CatCardNotFoundException{
         catCardDao.update(id, card);
         return true;
     }
 
     @RequestMapping(path = "/api/cards/{id}", method = RequestMethod.DELETE)
-    public boolean delete(@PathVariable long id){
+    public boolean delete(@PathVariable long id)throws CatCardNotFoundException{
         catCardDao.delete(id);
         return true;
     }
