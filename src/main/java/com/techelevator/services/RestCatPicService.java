@@ -1,6 +1,5 @@
 package com.techelevator.services;
 
-import com.techelevator.model.CatFact;
 import org.springframework.stereotype.Component;
 
 import com.techelevator.model.CatPic;
@@ -8,8 +7,6 @@ import org.springframework.web.client.RestTemplate;
 
 @Component
 public class RestCatPicService implements CatPicService {
-
-
 
 
 	private String API_URL = "https://cat-data.netlify.app/api/pictures/random";
